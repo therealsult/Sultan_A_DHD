@@ -52,7 +52,10 @@ function handleDrop(e) {
 	console.log('droppin on me!');
 	e.target.appendChild(draggedPiece);}
 
-
+function dragEnd(e) { 
+	e.preventDefault();
+	console.log('locked in');
+	e.target.appendChild(draggedPiece);}
 
 
 
@@ -71,6 +74,14 @@ puzzelPieces.forEach(piece => piece.addEventListener('dragstart', handleStartDra
 dropZones.forEach(zone => zone.addEventListener('dragover', handleDragOver));
 dropZones.forEach(zone => zone.addEventListener('drop', handleDrop));
 
+
+dropZones.forEach(zone => zone.addEventListener('lock', blockDefaultBehaviour));
+
+
+
+navButtons.addEventListener('click', () => {
+	puzzelPieces.forEach(puzzelPieces => input.value = '');
+})
 	
 
 
@@ -79,4 +90,4 @@ dropZones.forEach(zone => zone.addEventListener('drop', handleDrop));
 function blockDefaultBehaviour(e) {
 	e.preventDefault();}
 
-templink.addEventListener('click', blockDefaultBehaviour);
+dropZones.forEach(zone => zone.addEventListener('click', blockDefaultBehaviour));
