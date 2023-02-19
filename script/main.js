@@ -52,14 +52,18 @@ function handleDrop(e) {
 	console.log('droppin on me!');
 	e.target.appendChild(draggedPiece);}
 
-function dragEnd(e) { 
+
+function handleDrop(e) { 
 	e.preventDefault();
-	console.log('locked in');
-	e.target.appendChild(draggedPiece);}
+	console.log('dropped something on me');
 
+	if (this.children.length > 0) {
+		return;
+	}
 
-
-
+	this.appendChild(draggedPiece);
+	
+}
 /* event handling at the bottom */
 
 	// how is the user going to interact with the elements / controll procedure
@@ -79,10 +83,12 @@ dropZones.forEach(zone => zone.addEventListener('lock', blockDefaultBehaviour));
 
 
 
+
+/*
 navButtons.addEventListener('click', () => {
 	puzzelPieces.forEach(puzzelPieces => input.value = '');
 })
-	
+*/
 
 
 
